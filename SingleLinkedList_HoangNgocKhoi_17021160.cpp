@@ -1,4 +1,6 @@
 /*--------------------
+By: Hoang Ngoc Khoi
+104 lines code
 ---------------------*/
 #include <iostream>
 using namespace std;
