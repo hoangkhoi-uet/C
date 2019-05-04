@@ -1,6 +1,6 @@
 /*--------------------
 By: Hoang Ngoc Khoi
-104 lines code
+117 lines code
 ---------------------*/
 #include <iostream>
 using namespace std;
@@ -22,11 +22,16 @@ int main(){
     cout << "Bai tap nghien cuu Single Linked List!" << endl;
 
     Node *pHead = new Node();                         //Tao node head
+    if(!pHead) {                      //Kiem tra bo nho duoc cap phat
+        cout << "Khong cap duoc bo nho(pHead)!" << endl;
+        return 0;
+    }
+
     int n;                             //So luong phep toan(delete, insert)
     cout << "Nhap so luong phep toan: ";
     cin >> n;
 
-    cout << "Lan luot nhap vao cac phep toan: " << endl;
+    cout << "=> Lan luot nhap vao cac phep toan: " << endl;
     string input;                              //Ten cua phep can nhap
     int _index, _value;                         //Vi tri, gia tri
     for(int i = 0; i < n; i ++) {
@@ -69,9 +74,14 @@ Node* deleteNode(Node* head, int index){
 }
 
 Node* addNode(Node* head, int index, int value){
-    Node *ptr = head;
-    Node *newNode = new Node;
+    Node *newNode = new Node();
+    if(!newNode) {                     //Kiem tra bo nho duoc cap phat
+        cout << "khong cap duoc bo nho(addNode)!" << endl;
+        return head;                    //Tra lai danh sach ban dau
+    }
+
     newNode -> value = value;
+    Node *ptr = head;
 
     if(ptr -> nextNode == NULL && index == 0) {       //List chua co gi
         ptr -> value = value;
@@ -96,7 +106,7 @@ Node* addNode(Node* head, int index, int value){
 
 void printNode(Node *head){                           //Print node
     Node *ptr = head;
-    cout << "=> Danh sach lien ket hien tai la: ";
+    cout << "\n=> Danh sach lien ket hien tai la: ";
     while(ptr != NULL){
         cout << ptr -> value << " ";
         ptr = ptr -> nextNode;
